@@ -7,4 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+  },
 })

@@ -35,8 +35,14 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
-        <div className="px-5 py-4 border-t border-gray-100">
+        <div className="px-5 py-4 border-t border-gray-100 space-y-0.5">
           <p className="text-xs text-gray-400">Powered by Supabase</p>
+          <p className="text-xs text-gray-300" title="Build timestamp">
+            Built {new Date(__BUILD_DATE__).toLocaleString('en-GB', {
+              day: '2-digit', month: 'short', year: 'numeric',
+              hour: '2-digit', minute: '2-digit',
+            })}
+          </p>
         </div>
       </aside>
 
