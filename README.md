@@ -1,5 +1,7 @@
 # People Hub — Supabase CRUD Demo
 
+[![CI / Deploy](https://github.com/ssanga/supabase_example/actions/workflows/ci.yml/badge.svg)](https://github.com/ssanga/supabase_example/actions/workflows/ci.yml)
+
 A clean, minimal CRUD application built with Supabase, React and Vite. Manages employees and departments with a real PostgreSQL database — no custom backend needed.
 
 **Live demo:** https://supabaseexample-one.vercel.app/
@@ -178,6 +180,26 @@ e2e/
 ├── employees.spec.ts     # Full CRUD + search/filter
 └── dashboard.spec.ts     # Stat cards and sections visible
 ```
+
+## CI / CD pipeline
+
+Every push to `main` triggers the GitHub Actions workflow (`.github/workflows/ci.yml`):
+
+```
+push to main
+    │
+    ├── job: Tests & Build
+    │     ├── Unit tests (Vitest)        ~7s   — Supabase fully mocked
+    │     ├── Build check (tsc + vite)   ~10s
+    │     └── E2E tests (Playwright)     ~30s  — real Supabase, QA data cleaned up after
+    │
+    └── job: Deploy to Vercel            only if tests pass
+          └── vercel pull → vercel build --prod → vercel deploy --prebuilt
+```
+
+On pull requests only the **Tests & Build** job runs — no deploy.
+
+Vercel auto-deploy is disabled ("Don't build anything") so production deploys only happen through this pipeline.
 
 ## Project structure
 
