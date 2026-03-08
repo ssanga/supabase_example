@@ -55,3 +55,6 @@ Generate a clear, structured pull request description based on the current branc
 
 **Changed files:**
 !`git diff --name-only $(git merge-base HEAD ${ARGUMENTS:-main})..HEAD 2>/dev/null || git diff --name-only HEAD~1`
+
+**Diff summary:**
+!`git diff $(git merge-base HEAD ${ARGUMENTS:-main})..HEAD --stat 2>/dev/null || git diff HEAD~1 --stat`
