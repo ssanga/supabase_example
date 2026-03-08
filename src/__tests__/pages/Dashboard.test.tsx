@@ -4,8 +4,10 @@ import { MemoryRouter } from 'react-router-dom'
 import Dashboard from '../../pages/Dashboard'
 import type { Department, Employee } from '../../types'
 
-vi.mock('../../hooks/useEmployees')
-vi.mock('../../hooks/useDepartments')
+// Factory functions prevent vitest from importing the real modules,
+// which would trigger supabase.ts and require env vars even in unit tests.
+vi.mock('../../hooks/useEmployees', () => ({ useEmployees: vi.fn() }))
+vi.mock('../../hooks/useDepartments', () => ({ useDepartments: vi.fn() }))
 
 import { useEmployees } from '../../hooks/useEmployees'
 import { useDepartments } from '../../hooks/useDepartments'

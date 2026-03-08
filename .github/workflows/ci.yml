@@ -25,15 +25,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Unit tests — Supabase is fully mocked, no credentials needed
-      - name: Unit tests (Vitest)
-        run: npm run test:run
-
-      # Create .env so Vite dev server (used by Playwright) can read the vars
+      # Create .env first — needed by Vite (build + E2E dev server) and as a
+      # safety net in case any module-level import resolves supabase.ts before mocks kick in
       - name: Create .env from secrets
         run: |
           echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env
           echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env
+
+      # Unit tests — Supabase is fully mocked, no credentials needed
+      - name: Unit tests (Vitest)
+        run: npm run test:run
 
       # Verify the TypeScript + Vite build compiles without errors
       - name: Build check (tsc + vite build)
