@@ -87,6 +87,56 @@ npm run dev
 
 Open http://localhost:5173
 
+## Testing
+
+The project uses [Vitest](https://vitest.dev/) with [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) and jsdom. Tests cover components, custom hooks and the Dashboard page. Supabase calls are fully mocked so no real database connection is needed.
+
+**Run tests in watch mode**
+
+```bash
+npm test
+```
+
+**Run tests once**
+
+```bash
+npm run test:run
+```
+
+**Run tests with coverage report**
+
+```bash
+npm run test:coverage
+```
+
+The coverage report is generated in `coverage/index.html` (open in any browser). Current coverage across the core files:
+
+| Area | Coverage |
+|------|---------|
+| Components (`ConfirmDialog`, `Modal`, `Layout`, `EmployeeTable`) | 100% |
+| `DepartmentForm`, `EmployeeForm` | ~96% |
+| Hooks (`useDepartments`, `useEmployees`) | ~93–100% |
+| `Dashboard` page | ~94% |
+
+### Test structure
+
+```
+src/__tests__/
+├── components/
+│   ├── ConfirmDialog.test.tsx
+│   ├── Modal.test.tsx
+│   ├── Layout.test.tsx
+│   ├── DepartmentTable.test.tsx
+│   ├── DepartmentForm.test.tsx
+│   ├── EmployeeTable.test.tsx
+│   └── EmployeeForm.test.tsx
+├── hooks/
+│   ├── useDepartments.test.ts
+│   └── useEmployees.test.ts
+└── pages/
+    └── Dashboard.test.tsx
+```
+
 ## Project structure
 
 ```
