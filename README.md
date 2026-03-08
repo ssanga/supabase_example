@@ -242,3 +242,6 @@ To deploy your own instance:
 ## Security note
 
 This demo uses Supabase's `anon` public key with permissive Row Level Security policies, which is fine for a demo. For a production app you would restrict RLS policies based on authenticated users and never expose the `service_role` key in the frontend.
+
+## Skills test
+this project was built as a skills test for a frontend role. It demonstrates:
