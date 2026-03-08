@@ -137,6 +137,48 @@ src/__tests__/
     └── Dashboard.test.tsx
 ```
 
+### E2E tests (Playwright)
+
+End-to-end tests run against the real application and a live Supabase database. They require the dev server to be running (or it starts automatically) and a valid `.env` file with Supabase credentials.
+
+All test data is prefixed with **`QA`** (e.g. department name "QA Automation Dept", employee email "qa.playwright@test.com") so it is easy to identify and is cleaned up automatically via the Supabase REST API at the end of each test suite.
+
+**Run headless (default)**
+
+```bash
+npm run e2e
+```
+
+**Run with Playwright UI (step-by-step debugger)**
+
+```bash
+npm run e2e:ui
+```
+
+**Run headed (see the browser)**
+
+```bash
+npm run e2e:headed
+```
+
+**Open last HTML report**
+
+```bash
+npm run e2e:report
+```
+
+#### E2E structure
+
+```
+e2e/
+├── helpers/
+│   └── cleanup.ts        # Deletes QA-prefixed rows via Supabase REST API
+├── navigation.spec.ts    # Sidebar links and routing
+├── departments.spec.ts   # Full CRUD + validation + confirm dialog
+├── employees.spec.ts     # Full CRUD + search/filter
+└── dashboard.spec.ts     # Stat cards and sections visible
+```
+
 ## Project structure
 
 ```
