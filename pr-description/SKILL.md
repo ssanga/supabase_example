@@ -23,20 +23,20 @@ Generate a clear, structured pull request description based on the current branc
 3. Write the PR description using this template:
 
 ```
-## Summary
+## Resumen
 
-- <bullet point summary of what this PR does>
-- <another key point if needed>
+- <resumen en bullet point de lo que hace este PR>
+- <otro punto clave si es necesario>
 
-## Changes
+## Cambios
 
-- <specific change 1>
-- <specific change 2>
+- <cambio específico 1>
+- <cambio específico 2>
 
-## Test plan
+## Plan de pruebas
 
-- [ ] <how to verify this works>
-- [ ] <another verification step>
+- [ ] <cómo verificar que funciona>
+- [ ] <otro paso de verificación>
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
@@ -44,6 +44,7 @@ Generate a clear, structured pull request description based on the current branc
 ## Rules
 
 - Keep the PR title under 70 characters, starting with a conventional commit type (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`)
+- Write all content **in Spanish** — title, summary, changes, and test plan
 - Be concise — focus on *why* and *what*, not line-by-line detail
 - If `$ARGUMENTS` is provided, use it as the base branch for comparison; otherwise default to `main`
 
